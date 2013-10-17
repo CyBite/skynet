@@ -22,6 +22,44 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.cybite.SplashScreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_splash_screen"
+            android:theme="@style/FullscreenTheme" >
+        </activity>
+        <activity
+            android:name="com.example.cybite.HomeActivity"
+            android:label="@string/title_activity_home" >
+        </activity>
+        <activity
+            android:name="com.example.cybite.SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name="com.example.cybite.RestaurantActivity"
+            android:label="@string/title_activity_restaurant" >
+        </activity>
+        <activity
+            android:name="com.example.cybite.NearByActivity"
+            android:label="@string/title_activity_near_by" >
+        </activity>
+        <activity
+            android:name="com.example.cybite.RestaurantResultsActivity"
+            android:label="@string/title_activity_restaurant_results" >
+        </activity>
+        <activity
+            android:name="com.example.cybite.RestaurantInfoActivity"
+            android:label="@string/title_activity_restaurant_info" >
+        </activity>
+        <activity
+            android:name="com.example.cybite.CyrideMapsActivity"
+            android:label="@string/title_activity_cyride_maps" >
+        </activity>
+        <activity
+            android:name="com.example.cybite.CyrideNoMaps"
+            android:label="@string/title_activity_cyride_no_maps" >
+        </activity>
     </application>
 
 </manifest>
