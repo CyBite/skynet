@@ -1,6 +1,7 @@
-package com.example.cybite;
+package com.se319.cybite;
 
-import com.example.cybite.util.SystemUiHider;
+import com.example.cybite.R;
+import com.se319.cybite.util.SystemUiHider;
 
 import android.annotation.TargetApi;
 import android.app.Activity;

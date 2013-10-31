@@ -1,4 +1,4 @@
-package com.example.cybite.util;
+package com.se319.cybite.util;
 
 import android.annotation.TargetApi;
 import android.app.Activity;

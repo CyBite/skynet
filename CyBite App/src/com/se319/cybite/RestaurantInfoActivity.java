@@ -1,21 +1,23 @@
-package com.example.cybite;
+package com.se319.cybite;
+
+import com.example.cybite.R;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 
-public class CyrideNoMaps extends Activity {
+public class RestaurantInfoActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_cyride_no_maps);
+		setContentView(R.layout.activity_restaurant_info);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.cyride_no_maps, menu);
+		getMenuInflater().inflate(R.menu.restaurant_info, menu);
 		return true;
 	}
 

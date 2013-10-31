@@ -1,4 +1,4 @@
-package com.example.cybite.util;
+package com.se319.cybite.util;
 
 import android.app.Activity;
 import android.os.Build;
