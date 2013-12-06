@@ -18,7 +18,7 @@
         android:gravity="center"
         android:keepScreenOn="true"
         android:text="@string/dummy_content"
-        android:textColor="@color/Text_yellow"
+        android:textColor="@color/text"
         android:textSize="50sp"
         android:textStyle="bold" />
 

@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="@color/splash_screen"
+    android:measureWithLargestChild="true"
     android:orientation="vertical" >
 
     <TextView
@@ -14,6 +16,7 @@
 
     <TableLayout
         android:layout_width="320dp"
+        android:layout_marginTop="40dp"
         android:layout_height="fill_parent" >
 
         <TableRow
@@ -24,17 +27,20 @@
             <CheckBox
                 android:id="@+id/checkBox1"
                 android:layout_column="0"
-                android:text="1 Red" />
+                android:text="1 Red"
+                android:textColor="@color/text" />
 
             <CheckBox
                 android:id="@+id/checkBox2"
                 android:layout_column="1"
-                android:text="1A Red" />
+                android:text="1A Red"
+                android:textColor="@color/text" />
 
             <CheckBox
                 android:id="@+id/checkBox3"
                 android:layout_column="2"
-                android:text="1B Red" />
+                android:text="1B Red"
+                android:textColor="@color/text" />
         </TableRow>
 
         <TableRow
@@ -45,17 +51,20 @@
             <CheckBox
                 android:id="@+id/checkBox4"
                 android:layout_column="0"
-                android:text="2 Green" />
+                android:text="2 Green"
+                android:textColor="@color/text" />
 
             <CheckBox
                 android:id="@+id/checkBox5"
                 android:layout_column="1"
-                android:text="3 Blue" />
+                android:text="3 Blue"
+                android:textColor="@color/text" />
 
             <CheckBox
                 android:id="@+id/checkBox6"
                 android:layout_column="2"
-                android:text="4 Gray" />
+                android:text="4 Gray"
+                android:textColor="@color/text" />
         </TableRow>
 
         <TableRow
@@ -66,17 +75,20 @@
             <CheckBox
                 android:id="@+id/checkBox7"
                 android:layout_column="0"
-                android:text="4A Gray" />
+                android:text="4A Gray"
+                android:textColor="@color/text" />
 
             <CheckBox
                 android:id="@+id/checkBox8"
                 android:layout_column="1"
-                android:text="5 Yellow" />
+                android:text="5 Yellow"
+                android:textColor="@color/text" />
 
             <CheckBox
                 android:id="@+id/checkBox9"
                 android:layout_column="0"
-                android:text="6 Brown" />
+                android:text="6 Brown"
+                android:textColor="@color/text" />
         </TableRow>
 
         <TableRow
@@ -87,17 +99,20 @@
             <CheckBox
                 android:id="@+id/checkBox10"
                 android:layout_column="0"
-                android:text="6A Brown" />
+                android:text="6A Brown"
+                android:textColor="@color/text" />
 
             <CheckBox
                 android:id="@+id/checkBox11"
                 android:layout_column="1"
-                android:text="6B Brown" />
+                android:text="6B Brown"
+                android:textColor="@color/text" />
 
             <CheckBox
                 android:id="@+id/checkBox12"
                 android:layout_column="2"
-                android:text="7 Purple" />
+                android:text="7 Purple"
+                android:textColor="@color/text" />
         </TableRow>
 
         <TableRow
@@ -108,17 +123,20 @@
             <CheckBox
                 android:id="@+id/checkBox13"
                 android:layout_column="0"
-                android:text="8 Aqua" />
+                android:text="8 Aqua"
+                android:textColor="@color/text" />
 
             <CheckBox
                 android:id="@+id/checkBox14"
                 android:layout_column="1"
-                android:text="10 Pink" />
+                android:text="10 Pink"
+                android:textColor="@color/text" />
 
             <CheckBox
                 android:id="@+id/checkBox15"
                 android:layout_column="2"
-                android:text="21 Cardinal" />
+                android:text="21 Cardinal"
+                android:textColor="@color/text" />
         </TableRow>
 
         <TableRow
@@ -129,17 +147,20 @@
             <CheckBox
                 android:id="@+id/checkBox16"
                 android:layout_column="0"
-                android:text="22 Gold" />
+                android:text="22 Gold"
+                android:textColor="@color/text" />
 
             <CheckBox
                 android:id="@+id/checkBox17"
                 android:layout_column="1"
-                android:text="23 Orange" />
+                android:text="23 Orange"
+                android:textColor="@color/text" />
 
             <CheckBox
                 android:id="@+id/checkBox18"
                 android:layout_column="2"
-                android:text="24 Silver" />
+                android:text="24 Silver"
+                android:textColor="@color/text" />
         </TableRow>
         
         <TableRow
@@ -150,16 +171,16 @@
         		android:id="@+id/checkBox19"
         		android:layout_width="wrap_content"
        		 	android:layout_height="wrap_content"
-        		android:text="View All Routes" />
+        		android:text="View All Routes"
+        		android:textColor="@color/text" />
     		<CheckBox
         		android:id="@+id/checkBox20"
         		android:layout_width="wrap_content"
         		android:layout_height="wrap_content"
-        		android:text="View Closest Route" />
+        		android:text="View Closest Route"
+        		android:textColor="@color/text" />
         </TableRow>
     </TableLayout>
-    
-    
 
      <TextView
         android:id="@+id/textView1"
@@ -167,18 +188,24 @@
         android:layout_height="wrap_content"
         android:layout_weight="2.54"
         android:text="\n"
+        android:textColor="@color/text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
      
      <Button
          android:id="@+id/ShowRoutes"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
+         android:layout_marginTop="40dp"
+         android:textStyle="bold"
+         android:textColor="@color/button_text"
          android:text="Show routes" />
      
    	<Button
          android:id="@+id/ViewTimes"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
+         android:textStyle="bold"
+         android:textColor="@color/button_text"
          android:text="View times" />
 
 </LinearLayout>

@@ -1,7 +1,9 @@
 <resources>
 
     <color name="blank_overlay">#FF3030</color>
-    <color name="splash_screen">#DC143C</color>
-    <color name="Text_yellow">#FFFF00</color>
+    <color name="splash_screen">#8B1A1A</color>
+    <color name="text">#FFD700</color>
+    <color name="button_text">#FFD700</color>
+    <color name="white">#FFFFFF</color>
 
 </resources>

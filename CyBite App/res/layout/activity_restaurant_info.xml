@@ -1,8 +1,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/LinearLayout1"
-    android:layout_width="wrap_content"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:background="@color/splash_screen"
+    android:fitsSystemWindows="false"
+    android:measureWithLargestChild="true"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -31,6 +34,7 @@
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textSize="15sp"
+                android:textColor="@color/text"
                 android:layout_marginBottom="20dp" />
         </TableRow>
 
@@ -45,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:text="TextView" 
                 android:textSize="15sp"
+                android:textColor="@color/text"                
                 android:layout_marginBottom="20dp"/>
         </TableRow>
 
@@ -59,7 +64,8 @@
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textSize="15sp"
-                android:layout_marginBottom="20dp" />
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/text" />
         </TableRow>
 
         <TableRow
@@ -79,7 +85,8 @@
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textSize="15sp"
-                android:layout_marginBottom="20dp" />
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/text" />
         </TableRow>
 
         <TableRow
@@ -93,7 +100,8 @@
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textSize="15sp"
-                android:layout_marginBottom="20dp" />
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/text" />
         </TableRow>
 
     </TableLayout>
@@ -112,6 +120,7 @@
         android:id="@+id/restInfoToMaps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Take me there!" />
+        android:text="Take me there!"
+        android:textColor="@color/button_text" />
 
 </LinearLayout>
