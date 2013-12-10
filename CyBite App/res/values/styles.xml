@@ -42,7 +42,7 @@
     </style>
 
     <style name="MooTextAppearanceSpinnerItem" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
-        <item name="android:textColor">@color/text</item>
+        <item name="android:textColor">@layout/allow_transparency</item>
     </style>
     
     <style name="ListFont" parent="@android:style/Widget.ListView">

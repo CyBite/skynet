@@ -169,7 +169,7 @@ public class NearByActivity extends FragmentActivity {
 				CameraUpdate center = CameraUpdateFactory.newLatLng(currentPosition);
 				googleMap.moveCamera(center);
 				//Zoom in to location
-				CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
+				CameraUpdate zoom = CameraUpdateFactory.zoomTo(12);
 				googleMap.animateCamera(zoom);
 			} 
 
