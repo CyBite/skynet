@@ -43,6 +43,7 @@ public class SplashScreenActivity extends Activity {
 	                }catch(InterruptedException e){};
 	                Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
 	                SplashScreenActivity.this.startActivity(intent);
+	                finish();
 	            }
 	        };
 	        thread.start();
