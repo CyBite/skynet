@@ -101,11 +101,11 @@ public class CyRideMapsActivity extends FragmentActivity {
 	           //PLACE THE INITIAL MARKER
 	        	MoveToUser(location);
 	        	drawRoutes(location);
-	        }
-	        //locationManager.requestLocationUpdates(provider, 20000, 0, locationListener);        
+	        }    
 	    }
 	}
-
+	
+	// Move google maps from world view to the user
 	private void MoveToUser(Location location){
 		Restaurant rest = (Restaurant) getIntent().getExtras().get("restaurant");
 		googleMap.addMarker(new MarkerOptions()
@@ -122,6 +122,7 @@ public class CyRideMapsActivity extends FragmentActivity {
 		googleMap.animateCamera(zoom);
 		}
 	
+	// Initialize all polyline bus routes
 	PolylineOptions options1Red = new PolylineOptions();
 	PolylineOptions options2Green = new PolylineOptions();
 	PolylineOptions options3Blue = new PolylineOptions();
@@ -137,14 +138,17 @@ public class CyRideMapsActivity extends FragmentActivity {
 	PolylineOptions options23Orange = new PolylineOptions();
 	ArrayList<PolylineOptions> options24Silver = new ArrayList<PolylineOptions>();
 	
+	// Look up a route's coordinates from the text file "cyride_routes.txt" in assets
 	public ArrayList<LatLng> findCoordinates(BufferedReader s) throws IOException {
 		ArrayList<LatLng> routeCoord = new ArrayList<LatLng>();
 		String coord = s.readLine();
 		if(coord != null) {
+			
+			// Last coordinate will end with a blank line
 			while(!coord.equals("")) {
+				// All coordinates have the format "Latitude, Longitude"
 				String[] latlng = coord.split(", ");
 				routeCoord.add(new LatLng(Double.valueOf(latlng[0]), Double.valueOf(latlng[1])));
-				//System.out.println("lat = "+ latlng[0] + "lng = "+ latlng[1]);
 				coord = s.readLine();
 				if(coord == null) {
 					coord = "";
@@ -154,38 +158,10 @@ public class CyRideMapsActivity extends FragmentActivity {
 		return routeCoord;
 	}
 	
+	// Initializes all the routes
 	private void initializeRoutes() {
-		/* Initialize each route */
-		/*route1Red.add(new LatLng(42.011962, -93.671343));
-		route1Red.add(new LatLng(42.011994, -93.678682));
-		route1Red.add(new LatLng(42.012201, -93.681707));
-		route1Red.add(new LatLng(42.014561, -93.680956));
-		route1Red.add(new LatLng(42.014513, -93.678703));
-		route1Red.add(new LatLng(42.022898, -93.678639));
-		route1Red.add(new LatLng(42.022729, -93.655583));
-		route1Red.add(new LatLng(42.025267, -93.655668));			
-		route1Red.add(new LatLng(42.025338, -93.651248));
-		route1Red.add(new LatLng(42.024446, -93.649596));
-		route1Red.add(new LatLng(42.0238, -93.649338));
-		route1Red.add(new LatLng(42.022804, -93.650175));
-		route1Red.add(new LatLng(42.022796, -93.62021));
-		route1Red.add(new LatLng(42.025825, -93.620135));
-		route1Red.add(new LatLng(42.025833, -93.615392));			
-		route1Red.add(new LatLng(42.026885, -93.61536));
-		route1Red.add(new LatLng(42.026988, -93.610425));
-		route1Red.add(new LatLng(42.042686, -93.610736));
-		route1Red.add(new LatLng(42.043483, -93.611412));
-		route1Red.add(new LatLng(42.044479, -93.613697));
-		route1Red.add(new LatLng(42.045674, -93.614169));
-		route1Red.add(new LatLng(42.049785, -93.614277));
-		route1Red.add(new LatLng(42.050909, -93.615403));
-		route1Red.add(new LatLng(42.051172, -93.621776));	
-		route1Red.add(new LatLng(42.049344, -93.621846));
-		route1Red.add(new LatLng(42.049368, -93.620596));
-		route1Red.add(new LatLng(42.051192, -93.620548));*/
-		//options1Red.addAll(route1Red);
-		//options1Red.color(Color.RED);
-		
+		// Reads all route data from a text file found in "assets" folder
+		// Format is "Route Name", new line, then coordinate data
 		try {
 			BufferedReader s=new BufferedReader(new 
 		            InputStreamReader(getAssets().open("cyride_routes.txt")));
@@ -280,143 +256,16 @@ public class CyRideMapsActivity extends FragmentActivity {
 			}
 			s.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// Will never happen as long as file exists. Don't write any routes to google map
 		}
-		
-		// 1A Red
-		
-		// 1B Red
-		
-		// 2 Green
-		
-		// 3 Blue
-		/*route3Blue.add(new LatLng(42.020168, -93.616927));
-		route3Blue.add(new LatLng(42.02012, -93.610275));
-		route3Blue.add(new LatLng(42.017362, -93.610339));
-		route3Blue.add(new LatLng(42.01741, -93.616841));
-		route3Blue.add(new LatLng(42.020168, -93.616927));
-		route3Blue.add(new LatLng(42.019339, -93.619502));
-		route3Blue.add(new LatLng(42.019061, -93.627505));
-		route3Blue.add(new LatLng(42.016383, -93.630788));
-		route3Blue.add(new LatLng(42.016208, -93.639393));
-		route3Blue.add(new LatLng(42.022671, -93.639479));
-		route3Blue.add(new LatLng(42.02275, -93.650143));
-		route3Blue.add(new LatLng(42.024073, -93.649242));
-		route3Blue.add(new LatLng(42.025333, -93.651173));
-		route3Blue.add(new LatLng(42.025333, -93.651881));
-		route3Blue.add(new LatLng(42.028903, -93.651881));
-		route3Blue.add(new LatLng(42.028871, -93.641474));
-		route3Blue.add(new LatLng(42.030529, -93.641539));
-		route3Blue.add(new LatLng(42.030545, -93.644607));
-		route3Blue.add(new LatLng(42.038928, -93.644822));
-		route3Blue.add(new LatLng(42.041573, -93.644822));
-		route3Blue.add(new LatLng(42.041494, -93.643019));
-		route3Blue.add(new LatLng(42.040458, -93.643706));
-		route3Blue.add(new LatLng(42.039055, -93.643513));
-		route3Blue.add(new LatLng(42.038928, -93.644822));
-		route3Blue.add(new LatLng(42.039055, -93.643513));
-		route3Blue.add(new LatLng(42.040458, -93.643706));
-		route3Blue.add(new LatLng(42.041494, -93.643019));
-		route3Blue.add(new LatLng(42.040777, -93.641002));
-		route3Blue.add(new LatLng(42.043087, -93.641281));
-		route3Blue.add(new LatLng(42.043454, -93.640487));
-		route3Blue.add(new LatLng(42.044888, -93.640273));
-		route3Blue.add(new LatLng(42.045222, -93.640745));
-		route3Blue.add(new LatLng(42.045111, -93.642204));
-		route3Blue.add(new LatLng(42.045446, -93.642247));
-		route3Blue.add(new LatLng(42.045621, -93.625853));
-		route3Blue.add(new LatLng(42.047676, -93.626025));
-		route3Blue.add(new LatLng(42.048951, -93.627141));
-		route3Blue.add(new LatLng(42.048951, -93.627162));
-		route3Blue.add(new LatLng(42.05115, -93.623407));
-		route3Blue.add(new LatLng(42.05397, -93.623428));
-		route3Blue.add(new LatLng(42.053938, -93.620596));
-		route3Blue.add(new LatLng(42.053938, -93.620499));
-		route3Blue.add(new LatLng(42.049369, -93.620499));
-		route3Blue.add(new LatLng(42.049369, -93.621808));
-		route3Blue.add(new LatLng(42.05115, -93.623407));
-		options3Blue.addAll(route3Blue);
-		options3Blue.color(Color.BLUE);*/
-			
-		// 4 Gray
-
-		// 4A Gray
-			
-		// 5 Yellow
-		
-		// 6 Brown
-		/*route6Brown.add(new LatLng(41.998181, -93.63626));
-		route6Brown.add(new LatLng(42.000733, -93.633599));
-		route6Brown.add(new LatLng(42.001131, -93.634222));
-		route6Brown.add(new LatLng(42.00102, -93.635852));
-		route6Brown.add(new LatLng(42.000254, -93.637033));
-		route6Brown.add(new LatLng(41.999058, -93.637161));
-		route6Brown.add(new LatLng(41.998181, -93.63626));
-		route6Brown.add(new LatLng(41.99756, -93.637354));
-		route6Brown.add(new LatLng(41.997384, -93.639393));
-		route6Brown.add(new LatLng(41.995391, -93.639393));
-		route6Brown.add(new LatLng(41.995056, -93.639393));
-		route6Brown.add(new LatLng(41.995056, -93.639758));
-		route6Brown.add(new LatLng(41.995391, -93.639393));
-		route6Brown.add(new LatLng(41.997384, -93.639393));
-		route6Brown.add(new LatLng(42.00837, -93.639393));
-		route6Brown.add(new LatLng(42.008466, -93.640809));
-		route6Brown.add(new LatLng(42.009024, -93.642397));
-		route6Brown.add(new LatLng(42.008801, -93.644607));
-		route6Brown.add(new LatLng(42.009431, -93.645605));
-		route6Brown.add(new LatLng(42.011304, -93.646667));
-		route6Brown.add(new LatLng(42.01183, -93.648663));
-		route6Brown.add(new LatLng(42.011854, -93.651656));
-		route6Brown.add(new LatLng(42.016135, -93.65171));
-		route6Brown.add(new LatLng(42.016135, -93.650057));
-		route6Brown.add(new LatLng(42.02275, -93.650143));
-		route6Brown.add(new LatLng(42.024073, -93.649242));
-		route6Brown.add(new LatLng(42.025333, -93.651173));
-		route6Brown.add(new LatLng(42.025333, -93.651881));
-		route6Brown.add(new LatLng(42.028903, -93.651881));
-		route6Brown.add(new LatLng(42.028871, -93.641474));
-		route6Brown.add(new LatLng(42.030529, -93.641539));
-		route6Brown.add(new LatLng(42.030545, -93.644607));
-		route6Brown.add(new LatLng(42.048537, -93.64495));
-		route6Brown.add(new LatLng(42.049557, -93.645444));
-		route6Brown.add(new LatLng(42.050481, -93.64495));
-		route6Brown.add(new LatLng(42.056264, -93.644907));
-		route6Brown.add(new LatLng(42.056408, -93.634222));
-		route6Brown.add(new LatLng(42.05585, -93.632655));
-		route6Brown.add(new LatLng(42.056025, -93.620725));
-		route6Brown.add(new LatLng(42.051182, -93.620596));
-		route6Brown.add(new LatLng(42.049369, -93.620499));
-		route6Brown.add(new LatLng(42.049369, -93.621808));
-		route6Brown.add(new LatLng(42.05115, -93.623407));
-		route6Brown.add(new LatLng(42.051182, -93.620596));
-		options6Brown.addAll(route6Brown);
-		options6Brown.color(Color.rgb(139,69,19));*/
-		
-		// 6A Brown
-
-		// 6B Brown
-				
-		// 7 Purple
-		
-		// 8 Aqua
-
-		// 10 Pink
-		
-		// 21 Cardinal
-		
-		// 22 Gold
-		
-		// 23 Orange
-		
-		// 24 Silver
-		
 	}
 	
+	// Draw routes to google map that were chosen using checkbox values from "PrepCyRideMapActivity"
 	private void drawRoutes(Location location)
 	{
 		ArrayList<String> chosenRoutes = getIntent().getStringArrayListExtra("CheckedBoxes");
 		boolean closestRoute = false;
+		// Draw each route specified unless "View Optimal Route:" is chosen
 		for(int i = 0; i < chosenRoutes.size(); i++)
 		{
 			if(chosenRoutes.get(i).equals("1 Red"))
@@ -498,12 +347,15 @@ public class CyRideMapsActivity extends FragmentActivity {
 			}
 		}
 		if(closestRoute) {
+			// Get the restaurant's location, and the user's location
 			Restaurant rest = (Restaurant) getIntent().getExtras().get("restaurant");
 		 	LatLng locationRest = new LatLng(rest.getLat(), rest.getLongitude());
 		 	LatLng locationYou = new LatLng(location.getLatitude(), location.getLongitude());
 		 	ArrayList<PolylineOptions> options = new ArrayList<PolylineOptions>();
 		 	ArrayList<Double> shortestDist = new ArrayList<Double>();
 		 	
+		 	// Run through each route finding the total distance and arranging it in an arraylist from shortest to
+		 	// farthest distance
 			for(int i = 0; i < 18; i++) {
 				double totalDist = Double.MAX_VALUE;
 				PolylineOptions option = null;
@@ -580,6 +432,7 @@ public class CyRideMapsActivity extends FragmentActivity {
 				shortestDist.add(j, totalDist);
 				options.add(j, option);
 			}
+			// Add each route based on how many routes the user specified to draw (default = 1)
 			int j = 0;
 			int numRoutes = Integer.parseInt((String) getIntent().getExtras().get("routeSpinner"));
 			while(j < numRoutes && j < options.size() && shortestDist.get(j) != Double.MAX_VALUE) {
@@ -593,7 +446,9 @@ public class CyRideMapsActivity extends FragmentActivity {
 	}
 	
 	private class DistancePoint {
+		// Where a point intersects the current line from the shortest distance
 		public LatLng intersectPoint;
+		// Distance from a point to the closest spot on a line
 		public double distance;
 		public DistancePoint(double distance, LatLng intersect) {
 			this.distance = distance;
@@ -607,17 +462,18 @@ public class CyRideMapsActivity extends FragmentActivity {
 		DistancePoint shortestDistYou = new DistancePoint(Double.MAX_VALUE, null);
 		int shortestI = 0, shortestJ = 0;
 		if(vertices.size() != 0) {
+			// Find line where distance from restaurant to line is smallest
 			for(int i = 0; i < vertices.size()-1; i++) {
-				DistancePoint val = LineToPointDistance2D(vertices.get(i), vertices.get(i+1), rest, true);
+				DistancePoint val = LineToPointDistance2D(vertices.get(i), vertices.get(i+1), rest);
 				if(val.distance < shortestDistRest.distance) {
 					shortestDistRest.distance = val.distance;
 					shortestDistRest.intersectPoint = val.intersectPoint;
 					shortestI = i;
 				}
 			}
-	    
+			// Find line where distance from you to line is smallest
 			for(int j = 0; j < vertices.size()-1; j++) {
-				DistancePoint val = LineToPointDistance2D(vertices.get(j), vertices.get(j+1), you, true);
+				DistancePoint val = LineToPointDistance2D(vertices.get(j), vertices.get(j+1), you);
 				if(val.distance < shortestDistYou.distance) {
 					shortestDistYou.distance = val.distance;
 					shortestDistYou.intersectPoint = val.intersectPoint;
@@ -625,31 +481,45 @@ public class CyRideMapsActivity extends FragmentActivity {
 				}
 			}
 			double totalDist = 0;
+			// if you are closer to the beginning of the route than restaurant is, sum up distance here
 			if(shortestI <= shortestJ && direction != 1) {
-				totalDist += 10*Distance(shortestDistRest.intersectPoint, vertices.get(shortestI+1));
-				totalDist += 10*Distance(shortestDistYou.intersectPoint, vertices.get(shortestJ));
+				// Walking takes 10 times longer on average, so use this in calculation
+				totalDist += 10*shortestDistRest.distance;
+				// Add distance from intersection point to next vertex on route
+				totalDist += Distance(shortestDistRest.intersectPoint, vertices.get(shortestI+1));
+				totalDist += 10*shortestDistYou.distance;
+				totalDist += Distance(shortestDistYou.intersectPoint, vertices.get(shortestJ));
+				// Add rest of route to total distance
 				while(shortestI < shortestJ) {
 					totalDist += Distance(vertices.get(shortestI), vertices.get(shortestI+1));
 					shortestI++;
 				}
+			// if the restaurant is closer to the beginning of the route than you are, sum up distance here
 			} else if(shortestJ <= shortestI && direction != -1){
-				totalDist += 10*Distance(shortestDistRest.intersectPoint, vertices.get(shortestI));
-				totalDist += 10*Distance(shortestDistYou.intersectPoint, vertices.get(shortestJ+1));
+				// Walking takes 10 times longer on average, so use this in calculation
+				totalDist += 10*shortestDistRest.distance;
+				// Add distance from intersection point to next vertex on route
+				totalDist += Distance(shortestDistRest.intersectPoint, vertices.get(shortestI));
+				totalDist += 10*shortestDistYou.distance;
+				totalDist += Distance(shortestDistYou.intersectPoint, vertices.get(shortestJ+1));
+				// Add rest of route to total distance
 				while(shortestJ < shortestI) {
 					totalDist += Distance(vertices.get(shortestJ), vertices.get(shortestJ+1));
 					shortestJ++;
 				}
+			// if a route doesn't match up with any of the above criteria, just return the total walking
+			// distance from you to restaurant
 			} else {
 				totalDist = 10*Distance(you, rest);
 			}
-	    
 			return totalDist;
+		// If no route exists, return the max value distance can be
 		} else {
 			return Double.MAX_VALUE;
 		}
 	}
 	
-	//Compute the dot product AB . AC
+	// Compute the dot product AB . AC to see if the point exists beyond the one of the two end points of the line
 	private double DotProduct(LatLng pointA, LatLng pointB, LatLng pointC)
 	{
 	    double[] AB = new double[2];
@@ -661,7 +531,7 @@ public class CyRideMapsActivity extends FragmentActivity {
 	    double dot = AB[0] * BC[0] + AB[1] * BC[1];
 	    return dot;
 	}
-	//Compute the cross product AB x AC
+	// Compute the cross product AB x AC to find perpendicular distance from point to line
 	private double CrossProduct(LatLng pointA, LatLng pointB, LatLng pointC)
 	{
 	    double[] AB = new double[2];
@@ -674,7 +544,7 @@ public class CyRideMapsActivity extends FragmentActivity {
 	    return cross;
 	}
 
-	//Compute the distance from A to B
+	// Compute the distance from A to B
 	private double Distance(LatLng pointA, LatLng pointB)
 	{
 	    double d1 = pointA.latitude - pointB.latitude;
@@ -682,27 +552,26 @@ public class CyRideMapsActivity extends FragmentActivity {
 	    return Math.sqrt(d1 * d1 + d2 * d2);
 	}
 
-	//Compute the distance from AB to C
-	//if isSegment is true, AB is a segment, not a line.	
-	private DistancePoint LineToPointDistance2D(LatLng pointA, LatLng pointB, LatLng pointC, 
-		    boolean isSegment)
+	// Compute the distance from AB to C	
+	private DistancePoint LineToPointDistance2D(LatLng pointA, LatLng pointB, LatLng pointC)
 		{
+			// shortest distance from point to line
 		    double dist = CrossProduct(pointA, pointB, pointC) / Distance(pointA, pointB);
-		    if (isSegment)
-		    {
-		        double dot1 = DotProduct(pointA, pointB, pointC);
-		        if (dot1 > 0) 
-		            return new DistancePoint(Distance(pointB, pointC), pointC);
-
-		        double dot2 = DotProduct(pointB, pointA, pointC);
-		        if (dot2 > 0) 
-		            return new DistancePoint(Distance(pointA, pointC), pointC);
+		    // determine if point extends beyond line's two end points
+		    double dot1 = DotProduct(pointA, pointB, pointC);
+		    if (dot1 > 0) {
+		    	return new DistancePoint(Distance(pointB, pointC), pointB);
 		    }
-		    dist = Math.abs(dist);
+		    double dot2 = DotProduct(pointB, pointA, pointC);
+		    if (dot2 > 0) {
+		    	return new DistancePoint(Distance(pointA, pointC), pointA);
+		    }
+		    // Locate intersection point
 		    double u = (((pointC.latitude-pointA.latitude)*(pointB.latitude-pointA.latitude))+((pointC.longitude-pointA.longitude)*(pointB.longitude-pointA.longitude)))/Math.pow(Math.abs(Distance(pointA, pointB)), 2);
 		    double[] val = new double[2];
 		    val[0] = pointA.latitude + u * (pointB.latitude - pointA.latitude);
 		    val[1] = pointA.longitude + u * (pointB.longitude - pointA.longitude);
+		    // return absolute distance and intersection point
 		    return new DistancePoint(Math.abs(dist), new LatLng(val[0], val[1]));
 		}
 }
